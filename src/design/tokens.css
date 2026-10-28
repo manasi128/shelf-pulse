@@ -1,0 +1,166 @@
+/*
+ * Shelf Pulse design tokens: the ONE file for colours, fonts, radii and spacing.
+ *
+ * To apply the official L'Oréal brand kit, change values here only.
+ * Every component reads these variables (via Tailwind utilities in src/index.css),
+ * so nothing else needs to change.
+ *
+ * Themes: light (default), dark, outdoor (high contrast for direct sunlight).
+ * "system" follows the phone's light/dark setting.
+ */
+
+:root {
+  /* ---- Typography ---------------------------------------------------- */
+  /* Montserrat (open licence) for Latin; Noto scripts cover Hindi/Marathi (Devanagari), Tamil and Bengali.
+     Swap in the official brand typeface here when available. */
+  --font-heading: 'Montserrat', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Bengali', system-ui,
+    -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Montserrat', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Bengali', system-ui,
+    -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-base-size: 16px;
+  --heading-weight: 700;
+  /* Page titles: bold uppercase, slightly tracked. Uppercase only affects Latin script. */
+  --title-transform: uppercase;
+  --title-tracking: 0.01em;
+  /* Calls to action and small labels: uppercase, widely tracked. */
+  --label-tracking: 0.12em;
+
+  /* ---- Shape ---------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --border-width: 1px;
+
+  /* Minimum touch target (one-handed use, gloves, sunlight). */
+  --tap-min: 48px;
+
+  /* ---- Colour: light -------------------------------------------------- */
+  --color-bg: #ffffff;
+  --color-surface: #f7f6f3;
+  --color-surface-raised: #ffffff;
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #4a4a4a;
+  --color-line: #dedbd4;
+  --color-line-strong: #0a0a0a;
+
+  /* The one accent (rose). Use sparingly: active state, suggestions, key figures. */
+  --color-accent: #c2185b;
+  --color-accent-soft: #fdebf1;
+  --color-on-accent: #ffffff;
+  /* Decorative brand mark only (never carries meaning). */
+  --brand-gradient: linear-gradient(135deg, #f6c7a8 0%, #ec8a74 45%, #d6336c 100%);
+
+  /* Black header band, in every theme. */
+  --color-header-bg: #000000;
+  --color-header-ink: #ffffff;
+  --color-header-muted: #bdbdbd;
+
+  --color-primary: #0a0a0a;
+  --color-on-primary: #ffffff;
+
+  /* Status colours: always paired with an icon and a word, never alone. */
+  --color-green: #1d6b45;
+  --color-green-soft: #e3f1e9;
+  --color-amber: #8a5300;
+  --color-amber-soft: #fbefd9;
+  --color-red: #a8231b;
+  --color-red-soft: #fbe5e3;
+
+  --color-focus: #c2185b;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06);
+
+  /* Charts. Validated pair (lightness, chroma, colour-blind and normal-vision separation,
+     contrast) against the light surface; re-run the validator if you change them. */
+  --chart-1: #c98500; /* pilot territory / primary series */
+  --chart-2: #2a78d6; /* control territory */
+  --chart-grid: #e1e0d9;
+  --chart-axis: #6b6a66;
+}
+
+/* ---- Colour: dark ----------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='outdoor']) {
+    --color-bg: #0b0b0b;
+    --color-surface: #161616;
+    --color-surface-raised: #1d1d1d;
+    --color-ink: #f4f2ee;
+    --color-ink-muted: #b9b5ad;
+    --color-line: #34322e;
+    --color-line-strong: #f4f2ee;
+    --color-accent: #f48fb1;
+    --color-accent-soft: #3a1424;
+    --color-on-accent: #0b0b0b;
+    --color-primary: #f4f2ee;
+    --color-on-primary: #0b0b0b;
+    --color-green: #6fcf9b;
+    --color-green-soft: #12291d;
+    --color-amber: #f0b45a;
+    --color-amber-soft: #2e2210;
+    --color-red: #ff8a80;
+    --color-red-soft: #331513;
+    --color-focus: #f48fb1;
+    --shadow-card: none;
+    --chart-1: #c98500;
+    --chart-2: #3987e5;
+    --chart-grid: #2c2c2a;
+    --chart-axis: #a3a29d;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0b0b0b;
+  --color-surface: #161616;
+  --color-surface-raised: #1d1d1d;
+  --color-ink: #f4f2ee;
+  --color-ink-muted: #b9b5ad;
+  --color-line: #34322e;
+  --color-line-strong: #f4f2ee;
+  --color-accent: #f48fb1;
+  --color-accent-soft: #3a1424;
+  --color-on-accent: #0b0b0b;
+  --color-primary: #f4f2ee;
+  --color-on-primary: #0b0b0b;
+  --color-green: #6fcf9b;
+  --color-green-soft: #12291d;
+  --color-amber: #f0b45a;
+  --color-amber-soft: #2e2210;
+  --color-red: #ff8a80;
+  --color-red-soft: #331513;
+  --color-focus: #f48fb1;
+  --shadow-card: none;
+  --chart-1: #c98500;
+  --chart-2: #3987e5;
+  --chart-grid: #2c2c2a;
+  --chart-axis: #a3a29d;
+}
+
+/* ---- Outdoor: maximum contrast for direct sunlight -------------------- */
+:root[data-theme='outdoor'] {
+  --text-base-size: 18px;
+  --heading-weight: 700;
+  --border-width: 2px;
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-ink: #000000;
+  --color-ink-muted: #000000;
+  --color-line: #000000;
+  --color-line-strong: #000000;
+  --color-accent: #8e0e43;
+  --color-accent-soft: #ffffff;
+  --color-on-accent: #ffffff;
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-green: #00552c;
+  --color-green-soft: #ffffff;
+  --color-amber: #6b3d00;
+  --color-amber-soft: #ffffff;
+  --color-red: #8a0000;
+  --color-red-soft: #ffffff;
+  --color-focus: #000000;
+  --shadow-card: none;
+  --chart-grid: #bdbdbd;
+  --chart-axis: #000000;
+}

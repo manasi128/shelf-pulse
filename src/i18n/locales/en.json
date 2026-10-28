@@ -1,0 +1,408 @@
+{
+  "app": {
+    "name": "Shelf Pulse",
+    "tagline": "Spot ageing stock early. Route it before it becomes waste."
+  },
+  "footer": {
+    "disclaimer": "Concept prototype for the L'Oréal Sustainability Challenge 2026. Not an official L'Oréal product. Example data."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "mainNav": "Main navigation",
+    "settings": "Display and language settings"
+  },
+  "welcome": {
+    "chooseLanguage": "Choose your language",
+    "chooseRole": "Who is using the app?",
+    "rep": "Sales rep",
+    "repDesc": "Today's beat, shelf check and actions in the shop",
+    "manager": "Area manager",
+    "managerDesc": "Approve flags, track waste, growth and sustainability"
+  },
+  "nav": {
+    "home": "Home",
+    "today": "Today",
+    "godown": "Godown",
+    "sync": "Sync"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Display"
+  },
+  "theme": {
+    "system": "Auto",
+    "light": "Light",
+    "dark": "Dark",
+    "outdoor": "Outdoor"
+  },
+  "status": {
+    "green": "Green",
+    "amber": "Amber",
+    "red": "Red",
+    "greenHint": "Healthy. Fix anything in this visit.",
+    "amberHint": "Slow. Act now while there is time.",
+    "redHint": "Near act-by. Choose a route within 48 hours."
+  },
+  "sync": {
+    "online": "Online",
+    "offline": "Offline: saved on this phone",
+    "title": "Sync",
+    "pending_one": "{{count}} change waiting to send",
+    "pending_other": "{{count}} changes waiting to send",
+    "allSent": "Everything is sent",
+    "savedLocally": "Your work is saved on this phone, even without network.",
+    "sentTotal": "{{count}} sent so far",
+    "sendNow": "Send now",
+    "simulateOffline": "Simulate no network (demo)",
+    "resetDemo": "Reset demo data",
+    "resetConfirm": "Reset all demo data? Today's counts and decisions will be cleared.",
+    "waitingForNetwork": "Waiting for network",
+    "offlineShort": "Offline"
+  },
+  "rep": {
+    "todayTitle": "Today",
+    "todayIntro": "Your beat, ranked by what needs attention first.",
+    "legendTitle": "What the colours mean",
+    "beatLine": "{{territory}} · {{count}} outlets",
+    "routeStop": "Stop {{n}} on usual route",
+    "allClear": "All clear"
+  },
+  "manager": {
+    "title": "Area manager desk",
+    "intro": "Flags to decide, territory health and waste avoided."
+  },
+  "common": {
+    "buildingNext": "This screen arrives in the next build step.",
+    "loading": "Loading…"
+  },
+  "units": {
+    "lakh": "lakh",
+    "crore": "crore",
+    "pts": "pts"
+  },
+  "reason": {
+    "red_lines_one": "{{count}} batch needs a route",
+    "red_lines_other": "{{count}} batches need a route",
+    "act_by_passed": "Act-by date passed",
+    "act_by_today": "Act by today",
+    "act_by_soon_one": "Act by in {{count}} day",
+    "act_by_soon_other": "Act by in {{count}} days",
+    "amber_lines_one": "{{count}} slow line",
+    "amber_lines_other": "{{count}} slow lines",
+    "open_flags_one": "{{count}} open flag",
+    "open_flags_other": "{{count}} open flags",
+    "value_at_risk": "{{value}} at risk"
+  },
+  "tabs": {
+    "brief": "Brief",
+    "count": "Count",
+    "talk": "Talk",
+    "actions": "Actions",
+    "order": "Order",
+    "visitSteps": "Visit steps"
+  },
+  "brief": {
+    "title": "Before you go in",
+    "startCheck": "Start shelf check",
+    "lastVisit": "Last visit {{date}}",
+    "nudgeThisWeek_one": "{{count}} batch reaches act-by this week",
+    "nudgeThisWeek_other": "{{count}} batches reach act-by this week",
+    "nudgeOverdue_one": "{{count}} batch is past its act-by date",
+    "nudgeOverdue_other": "{{count}} batches are past their act-by date",
+    "notReordered": "Not reordered for 2+ visits",
+    "openFlags": "Waiting for a decision",
+    "launch": "New launch to offer here",
+    "launchWhy": "Lip products sell here every visit",
+    "redList": "Red list",
+    "billed": "{{n}} billed since last visit",
+    "backToToday": "Back to Today",
+    "visitDone": "Visit done"
+  },
+  "line": {
+    "actBy": "Act by {{date}}",
+    "actByPassed": "Act-by passed ({{date}})",
+    "noActBy": "No act-by date",
+    "cover": "{{n}} days to sell",
+    "coverNever": "Not selling at present",
+    "life": "{{n}} days of life",
+    "sold": "{{n}} sold since last visit",
+    "batch": "Batch {{code}}",
+    "recount": "This is more than last count plus deliveries. Please recount.",
+    "lastCount": "Last count {{n}}",
+    "flagOpen": "With area manager · decide by {{date}}",
+    "flagApproved": "Approved by area manager"
+  },
+  "signal": {
+    "dust_faded": "Dust or faded pack",
+    "backroom_cartons": "Unopened cartons in backroom",
+    "no_facing": "Pushed back or no facing",
+    "discount_ask": "Retailer asked for a discount",
+    "damaged_pack": "Damaged pack",
+    "same_batch_no_sales": "Same batch as last visit, no sales (auto)"
+  },
+  "count": {
+    "title": "Shelf check",
+    "photo": "Snap shelf photo",
+    "photoBusy": "Reading the shelf…",
+    "photoDone": "Counts filled from the photo. Check each one.",
+    "confidence": "{{pct}}% sure",
+    "fromPhoto": "From photo",
+    "scan": "Scan batch code",
+    "less": "One less: {{name}}",
+    "more": "One more: {{name}}",
+    "countOf": "Count: {{name}}",
+    "signals": "What do you see?",
+    "timer": "Time in shop {{time}}",
+    "next": "Next: talk to the retailer"
+  },
+  "talk": {
+    "title": "Three quick questions",
+    "q1": "Did customers ask for something you don't stock?",
+    "q2": "Has anyone asked for a discount on these?",
+    "q3": "Any unopened cartons in the backroom?",
+    "next": "Next: actions"
+  },
+  "actions": {
+    "title": "Actions",
+    "red": "Near expiry: recover value",
+    "amber": "Slow: help it sell",
+    "allGreen": "Nothing slow or near expiry here. Keep facings full.",
+    "suggested": "Suggested",
+    "stopShipping": "Stop shipping this batch here",
+    "noDiscount": "No unlabelled discounting",
+    "send": "Send to area manager",
+    "proposeMove": "Propose this move",
+    "markDone": "Mark done",
+    "done": "Done",
+    "locked": "Unlocks after 2 visits of trying",
+    "notPossible": "Not possible for this product",
+    "moveTo": "To {{outlet}} on the {{date}} delivery run",
+    "settlement": "Settled through the distributor: credit note to this shop, invoice to the receiver. Your payout is released when it sells there.",
+    "noIncentive": "No transfer incentive: sold in here within 8 weeks.",
+    "greenCredit": "Flagging now earns the retailer a swap into fast sellers.",
+    "next": "Next: order",
+    "allRoutes": "All recovery routes, in order"
+  },
+  "owner": {
+    "rep": "Fix it in this visit",
+    "area_manager": "Area manager decides within 7 days",
+    "area_manager_and_regional_head": "Area manager and regional head choose a route within 48 hours"
+  },
+  "rung": {
+    "transfer": "Move to a faster shop",
+    "salon_backbar": "Salon back-bar or academy",
+    "b2b_buyer": "Approved B2B buyer",
+    "staff_sale": "Staff sale",
+    "donation": "Donate, marked not for sale",
+    "tester": "Use as in-store tester",
+    "epr_recycling": "EPR packaging recycling",
+    "sell_through": "Sold through in the shop"
+  },
+  "step": {
+    "fix_visibility": "Fix visibility",
+    "shopkeeper_brief": "30-second brief to the shopkeeper",
+    "bundle_hero": "Bundle with a hero product",
+    "trial_minis": "Trial sachets or minis",
+    "move": "Move it to a shop where it sells"
+  },
+  "why": {
+    "transfer": "{{outlet}} sells this every visit and has a delivery run on {{date}}.",
+    "salon_backbar": "Professional product with {{n}} days left: a partner salon can use it in services.",
+    "b2b_buyer": "Sealed with {{n}} days left: an approved buyer recovers cash.",
+    "staff_sale": "{{n}} days left: a staff sale uses it before expiry.",
+    "donation": "Sealed and in date: a vetted NGO can use it, marked not for sale.",
+    "tester": "Outer pack damaged, product intact: use it as a tester.",
+    "epr_recycling": "Too close to expiry to use: recycle the packaging through EPR.",
+    "fix_visibility": "Hard to see: bring it to eye level, label facing out.",
+    "shopkeeper_brief": "Tell the shopkeeper in 30 seconds who it is for.",
+    "bundle_hero": "Keep it next to {{hero}} as a bundle (sealed packs only).",
+    "trial_minis": "Offer sachets or minis so customers can try it.",
+    "move": "Tried on 2 visits without moving. {{outlet}} sells it every visit.",
+    "moveNoReceiver": "Tried on 2 visits. No matching shop has a delivery run yet."
+  },
+  "order": {
+    "title": "Suggested order",
+    "kept": "Order value kept",
+    "slowAdded": "Slow stock added",
+    "usual": "Usual order",
+    "suggested": "This order",
+    "held": "Held back",
+    "share": "Share with retailer",
+    "finish": "Finish visit",
+    "finished": "Visit finished. Well done.",
+    "units": "{{n}} units",
+    "reason": {
+      "replenish": "Expected sales to next visit",
+      "fast_topup": "Fast seller: topped up to 2 visits",
+      "held_amber": "Held: slow on the shelf",
+      "held_red": "Held: near expiry",
+      "range_gap": "Retailer asked for this"
+    }
+  },
+  "share": {
+    "title": "For the retailer",
+    "intro": "Show this card or send the message yourself. Nothing is sent automatically.",
+    "creditTitle": "Swap credit",
+    "creditBody": "Slow stock flagged early is swapped into fast sellers. Late returns at expiry get the standard settlement.",
+    "messageLabel": "WhatsApp message (edit before sending)",
+    "copy": "Copy message",
+    "copied": "Copied",
+    "language": "Message language",
+    "msg": {
+      "greeting": "Namaste {{shop}},",
+      "order": "Today's suggested order: {{items}}",
+      "bundle": "Idea for the shelf: keep {{slow}} next to {{hero}} as a bundle.",
+      "swap": "If any stock is slow, tell me early and we will swap it into fast sellers.",
+      "signoff": "Thank you, {{rep}}"
+    },
+    "aiDraft": "Draft with AI",
+    "drafting": "Writing…"
+  },
+  "godown": {
+    "title": "Godown check",
+    "intro": "Weekly check at {{distributor}}: oldest batches first.",
+    "daysLeft": "{{n}} days of life left",
+    "units": "{{n}} units",
+    "stop": "Stop shipping this batch to: {{outlets}}",
+    "fastest": "Send to the fastest shops first: {{outlets}}",
+    "seed": "New launch: seed first to {{outlets}}",
+    "checked": "Checked",
+    "markChecked": "Mark checked",
+    "tooShort": "Less than the 60 days shops need on arrival: route through the recovery ladder."
+  },
+  "ai": {
+    "title": "AI help",
+    "intro": "AI only suggests. You confirm every count, signal and message.",
+    "mode_off": "Off: rules and manual entry only",
+    "mode_mock": "Demo: offline example readings",
+    "mode_live": "Live: needs a server key",
+    "liveReady": "Live AI is connected.",
+    "liveMissing": "No server key found. Live mode will fall back to the offline version.",
+    "src_live": "AI suggestion",
+    "src_mock": "Demo reading",
+    "src_rules": "From the playbook rules",
+    "sure": "{{pct}}% sure",
+    "chooseRule": "Use the rules' pick instead"
+  },
+  "voice": {
+    "title": "Voice note",
+    "intro": "Say what you see, in any language. The app suggests signals; you apply them.",
+    "record": "Record voice note",
+    "stop": "Stop",
+    "listening": "Listening…",
+    "demoNote": "Demo mode uses a sample note instead of the microphone.",
+    "transcript": "What was said (edit if needed)",
+    "extract": "Find signals",
+    "extracting": "Reading the note…",
+    "suggestions": "Suggested from the note",
+    "apply": "Apply",
+    "applied": "Applied",
+    "none": "Nothing found. Add signals by hand below.",
+    "rangeAsk": "Retailer asked for: {{sku}}",
+    "sample": "The sunscreen has two unopened cartons in the backroom. Customers asked for a discount on the lipstick. People keep asking for kajal."
+  },
+  "mgr": {
+    "tabs": {
+      "overview": "Overview",
+      "flags": "Flags",
+      "territory": "Territory",
+      "impact": "Impact",
+      "nav": "Manager desk sections"
+    },
+    "pilotNote": "Example data. Thresholds are a pilot proposal.",
+    "overview": {
+      "title": "This week in {{territory}}",
+      "summaryTitle": "Weekly summary",
+      "aiSummary": "Write with AI",
+      "writing": "Writing…",
+      "kpisTitle": "Key numbers",
+      "openFlags_one": "{{count}} flag waiting for your decision",
+      "openFlags_other": "{{count}} flags waiting for your decision",
+      "goToFlags": "Go to flags"
+    },
+    "kpi": {
+      "returnRate": "Return and expiry rate",
+      "returnRateSub": "Control territory: {{control}}",
+      "atRisk": "Stock at risk on shelves",
+      "atRiskSub": "Amber and red lines, at shelf value",
+      "resolved": "Resolved before act-by",
+      "resolvedSub": "{{n}} of {{due}} flags",
+      "osa": "Must-sell on shelf",
+      "osaSub": "Guardrail: must not fall",
+      "loading": "Loading index",
+      "loadingSub": "Sell-in growth {{primary}} minus sell-out growth {{secondary}}",
+      "loadingGood": "Below zero: shoppers are buying faster than we ship",
+      "loadingWarn": "Above zero: shipping faster than shoppers buy",
+      "trendTitle": "Return and expiry rate, last 8 weeks",
+      "pilot": "Pilot territory",
+      "control": "Control territory",
+      "week": "Week of",
+      "showTable": "Show as table"
+    },
+    "flags": {
+      "title": "Flags to decide",
+      "intro": "Red first, then the nearest deadline. Each flag shows what the rep saw.",
+      "empty": "Nothing waiting for a decision.",
+      "due": "Decide by {{date}}",
+      "dueToday": "Decide today",
+      "overdue": "Overdue since {{date}}",
+      "proposed": "Proposed",
+      "evidence": "What the rep saw",
+      "units": "{{n}} units",
+      "value": "{{value}} at shelf value",
+      "toOutlet": "To {{outlet}} on the {{date}} delivery run",
+      "via": "Via {{partner}}",
+      "approve": "Approve",
+      "decline": "Decline",
+      "note": "Note to the rep (optional)",
+      "decided": "Decided this week",
+      "approved": "Approved",
+      "declined": "Declined",
+      "raised": "Raised {{date}}",
+      "category": "For the category team",
+      "categoryBody": "{{sku}} is red in {{n}} outlets. Take it to the monthly demand review."
+    },
+    "territory": {
+      "title": "Territory",
+      "outlet": "Outlet",
+      "status": "Status",
+      "atRisk": "At risk",
+      "openFlags": "Open flags",
+      "visit": "Today's visit",
+      "visited": "Visited",
+      "notVisited": "Not yet",
+      "mustSell": "Must-sell",
+      "onShelf": "On shelf",
+      "missing": "Missing",
+      "allClear": "All clear"
+    },
+    "impact": {
+      "title": "Impact",
+      "intro": "Outcomes, not flag counts. Every unit routed up the waste hierarchy instead of to destruction.",
+      "saved": "Saved from waste",
+      "kept": "Units kept from destruction",
+      "packaging": "Packaging kept from landfill",
+      "trips": "Reverse trips avoided",
+      "sinceOpened": "+{{value}} since you opened the desk",
+      "byRoute": "By recovery route",
+      "route": "Route",
+      "units": "Units",
+      "rupees": "₹ saved",
+      "kg": "Packaging (kg)",
+      "chartTitle": "₹ saved from waste, by route",
+      "co2": "CO₂ is not shown: no emission factors have been provided.",
+      "packagingNote": "Packaging uses each product's pack weight (pilot proposal).",
+      "outcomesTitle": "Outcomes this month",
+      "repLine": "{{rep}}: {{saved}} saved from waste · {{n}} batches resolved before act-by"
+    },
+    "summary": {
+      "resolved": "{{n}} of {{due}} flags were resolved before their act-by date.",
+      "saved": "{{saved}} kept from waste so far, and {{units}} units kept from destruction.",
+      "rate": "Return and expiry rate is {{rate}}, against {{control}} in the control territory.",
+      "osa": "Must-sell availability is {{osa}}, so growth is protected.",
+      "open_one": "{{count}} flag is waiting for your decision.",
+      "open_other": "{{count}} flags are waiting for your decision.",
+      "category": "{{sku}} is red in {{n}} outlets: take it to the monthly demand review."
+    }
+  }
+}

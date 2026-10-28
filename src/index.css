@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+@import './design/tokens.css';
+
+/* Map design tokens to Tailwind utilities (bg-surface, text-ink, rounded-md, font-heading …). */
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-raised: var(--color-surface-raised);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-ink-muted);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-on-accent: var(--color-on-accent);
+  --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-green: var(--color-green);
+  --color-green-soft: var(--color-green-soft);
+  --color-amber: var(--color-amber);
+  --color-amber-soft: var(--color-amber-soft);
+  --color-red: var(--color-red);
+  --color-red-soft: var(--color-red-soft);
+  --color-header: var(--color-header-bg);
+  --color-on-header: var(--color-header-ink);
+  --color-header-muted: var(--color-header-muted);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+}
+
+@layer base {
+  html {
+    font-size: var(--text-base-size);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+    line-height: 1.15;
+  }
+  h1 {
+    text-transform: var(--title-transform);
+    letter-spacing: var(--title-tracking);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  * {
+    border-color: var(--color-line);
+  }
+}
+
+@layer components {
+  .tap {
+    min-height: var(--tap-min);
+    min-width: var(--tap-min);
+  }
+  .card {
+    background: var(--color-surface-raised);
+    border: var(--border-width) solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .hairline {
+    border-width: var(--border-width);
+  }
+  /* Calls to action and small labels: bold, uppercase, widely tracked. */
+  .cta {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--label-tracking);
+    font-size: 0.875rem;
+  }
+  .brand-mark {
+    background: var(--brand-gradient);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
