@@ -24,6 +24,9 @@ export default function LineFacts({ view }: { view: LineView }) {
         {Number.isFinite(e.cover) ? t('line.cover', { n: formatDays(e.cover) }) : t('line.coverNever')}
         <span className="text-muted">· {t('line.life', { n: formatDays(e.lifeLeft) })}</span>
       </li>
+      {!view.counted && (
+        <li className="text-xs text-muted">{t('line.fromLastCount', { date: formatDate(view.line.visits[view.line.visits.length - 1].date) })}</li>
+      )}
       {view.counted && (
         <li className="flex items-center gap-2">
           <ShoppingBag size={16} aria-hidden="true" className="shrink-0" />

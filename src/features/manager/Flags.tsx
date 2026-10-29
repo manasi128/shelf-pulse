@@ -15,7 +15,7 @@ function Deadline({ item }: { item: QueueItem }) {
   const { t } = useTranslation();
   const d = item.daysToDecide;
   const text =
-    d < 0 ? t('mgr.flags.overdue', { date: formatDate(item.flag.decideBy) }) : d === 0 ? t('mgr.flags.dueToday') : t('mgr.flags.due', { date: formatDate(item.flag.decideBy) });
+    d < 0 ? t('mgr.flags.overdue', { date: formatDate(item.flag.decideBy) }) : d === 0 ? t('mgr.flags.dueToday', { date: formatDate(item.flag.decideBy) }) : t('mgr.flags.due', { date: formatDate(item.flag.decideBy) });
   return (
     <p className={`flex items-center gap-1.5 text-sm font-semibold ${d <= 0 ? 'text-red' : ''}`}>
       <AlarmClock size={16} aria-hidden="true" />
@@ -29,7 +29,7 @@ function FlagCard({ item, today }: { item: QueueItem; today: string }) {
   const noteId = useId();
   const [note, setNote] = useState('');
   const p = item.flag.proposal;
-  const proposal = p.kind === 'route' ? t(`rung.${p.route}`) : t(`step.${p.step}`);
+  const proposal = t(`rung.${p.route}`);
   const decide = (decision: 'approved' | 'declined') =>
     void decideFlag(db, { flagId: item.flag.id, decision, today, note: note.trim() || undefined });
 
@@ -51,7 +51,7 @@ function FlagCard({ item, today }: { item: QueueItem; today: string }) {
       <div className="mt-3 rounded-md border-l-4 border-accent bg-surface p-3">
         <p className="text-xs font-semibold uppercase tracking-wide text-accent">{t('mgr.flags.proposed')}</p>
         <p className="mt-0.5 text-lg font-semibold">{proposal}</p>
-        {item.receiver && p.kind === 'route' && p.runDate && (
+        {item.receiver && p.runDate && (
           <p className="mt-1 flex items-center gap-1.5 text-sm">
             <Truck size={16} aria-hidden="true" />
             {t('mgr.flags.toOutlet', { outlet: item.receiver.name, date: formatDate(p.runDate) })}
@@ -165,7 +165,7 @@ export default function Flags() {
               <li key={f.id} className="flex flex-wrap items-center justify-between gap-2 p-3 text-sm">
                 <span>
                   <span className="font-semibold">{name(f.outletId)}</span> · {sku(f.skuId).name} ·{' '}
-                  {f.proposal.kind === 'route' ? t(`rung.${f.proposal.route}`) : t(`step.${f.proposal.step}`)}
+                  {t(`rung.${f.proposal.route}`)}
                 </span>
                 <span className={`inline-flex items-center gap-1 font-semibold ${f.state === 'approved' ? 'text-green' : 'text-muted'}`}>
                   {f.state === 'approved' ? <Check size={16} aria-hidden="true" /> : <X size={16} aria-hidden="true" />}

@@ -121,8 +121,8 @@ export async function raiseFlag(
 }
 
 /**
- * Manager decision. Approving a recovery route records it as resolved, which moves the
- * waste and sustainability tallies. Approving a playbook step just confirms it.
+ * Manager decision. Approving a transfer or recovery route records it as resolved, which moves the
+ * waste and sustainability tallies.
  */
 export async function decideFlag(db: ShelfPulseDB, args: { flagId: string; decision: 'approved' | 'declined'; today: ISODate; note?: string }) {
   await db.transaction('rw', [db.flags, db.resolutions, db.skus, db.outbox], async () => {
@@ -131,7 +131,7 @@ export async function decideFlag(db: ShelfPulseDB, args: { flagId: string; decis
     flag.state = args.decision;
     flag.decidedOn = args.today;
     if (args.note) flag.note = args.note;
-    if (args.decision === 'approved' && flag.proposal.kind === 'route') {
+    if (args.decision === 'approved') {
       flag.resolvedOn = args.today;
       const sku = await db.skus.get(flag.skuId);
       await db.resolutions.put({

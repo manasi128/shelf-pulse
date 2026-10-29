@@ -45,8 +45,8 @@ export function flagQueue(data: Dataset, drafts: Drafts, today: ISODate): QueueI
         sku: data.skus.find((s) => s.id === flag.skuId)!,
         value: flag.units * flag.unitPrice,
         daysToDecide: daysBetween(today, flag.decideBy),
-        receiver: p.kind === 'route' && p.receiverOutletId ? data.outlets.find((o) => o.id === p.receiverOutletId) : undefined,
-        partnerName: p.kind === 'route' && p.partnerId ? data.partners.find((x) => x.id === p.partnerId)?.name : undefined,
+        receiver: p.receiverOutletId ? data.outlets.find((o) => o.id === p.receiverOutletId) : undefined,
+        partnerName: p.partnerId ? data.partners.find((x) => x.id === p.partnerId)?.name : undefined,
         evidence: views.get(outlet.id)!.find((v) => v.sku.id === flag.skuId),
       };
     })
@@ -97,9 +97,14 @@ export function territory(data: Dataset, drafts: Drafts, today: ISODate) {
 export interface Kpis {
   returnRatePct: number;
   controlReturnRatePct: number;
+  /** Change since the first trend week, in percentage points. */
   returnRateChangePct: number;
+  returnRateStartPct: number;
+  returnRateStartWeek: ISODate;
+  /** Pilot minus control, this week, in percentage points. */
+  returnRateVsControlPct: number;
   atRisk: number;
-  resolved: { resolvedInTime: number; due: number; rate: number };
+  resolved: { resolvedInTime: number; closed: number; rate: number };
   mustSellOsa: number;
   loadingIndexPts: number;
   primaryGrowthPct: number;
@@ -115,8 +120,11 @@ export function kpis(data: Dataset, drafts: Drafts, today: ISODate): Kpis {
     returnRatePct: t.returnExpiryRatePct[last],
     controlReturnRatePct: t.controlReturnExpiryRatePct[last],
     returnRateChangePct: t.returnExpiryRatePct[last] - t.returnExpiryRatePct[0],
+    returnRateStartPct: t.returnExpiryRatePct[0],
+    returnRateStartWeek: t.weeks[0],
+    returnRateVsControlPct: t.returnExpiryRatePct[last] - t.controlReturnExpiryRatePct[last],
     atRisk: atRiskValue(lines.map((l) => l.evaluation)),
-    resolved: flagsResolvedBeforeActBy(data.flags, today),
+    resolved: flagsResolvedBeforeActBy(data.flags),
     mustSellOsa: mustSellAvailability(lines.map((l) => ({ mustSell: l.sku.mustSell, stock: l.stockNow }))),
     loadingIndexPts: loadingIndex(t.primaryGrowthPct, t.secondaryGrowthPct),
     primaryGrowthPct: t.primaryGrowthPct,

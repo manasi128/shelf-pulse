@@ -81,10 +81,11 @@ export interface Flag {
   outletId: string;
   skuId: string;
   status: Status;
-  /** What the rep proposes. */
-  proposal:
-    | { kind: 'playbook'; step: AmberStep }
-    | { kind: 'route'; route: RecoveryRoute; receiverOutletId?: string; runDate?: ISODate; partnerId?: string };
+  /**
+   * What the rep proposes. Only moves that need a decision reach the manager: transfers and recovery routes.
+   * Playbook steps in the shop (visibility, brief, bundle) are the rep's own call and never queue here.
+   */
+  proposal: { kind: 'route'; route: RecoveryRoute; receiverOutletId?: string; runDate?: ISODate; partnerId?: string };
   units: number;
   unitPrice: number;
   actBy: ISODate | null;

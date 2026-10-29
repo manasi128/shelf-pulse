@@ -7,6 +7,8 @@ import Footer from '../../components/Footer';
 import SkipLink from '../../components/SkipLink';
 import SyncChip from '../../components/SyncChip';
 import { LanguageSelect, ThemeSelect } from '../../components/Settings';
+import { DEMO_TODAY } from '../../config/demo';
+import { formatDate } from '../../i18n/format';
 
 const TABS = [
   { to: '/manager', end: true, icon: Gauge, key: 'mgr.tabs.overview' },
@@ -27,6 +29,7 @@ export default function ManagerLayout() {
             <Wordmark />
           </Link>
           <SyncChip />
+          <p className="text-sm text-header-muted">{t('mgr.demoDate', { date: formatDate(DEMO_TODAY) })}</p>
           <div className="grid w-full gap-2 sm:ml-auto sm:w-auto sm:grid-cols-2">
             <LanguageSelect />
             <ThemeSelect />

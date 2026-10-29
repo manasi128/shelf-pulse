@@ -35,19 +35,21 @@ Everything runs offline in demo mode. No accounts or API keys are needed.
 
 | Time | Beat | Do this | Say this |
 |---|---|---|---|
-| 0:00 | **1. Today** | Rep window, **Today**. | "Reps visit 30–40 shops a day. Today is ranked by risk, not route. Sharma General Store is stop 3 on the route but first here: one batch is already past its act-by date, three lines are slow, and two flags are open." |
+| 0:00 | **1. Today** | Rep window, **Today**. | "Reps visit 30–40 shops a day. Today is ranked by risk, not route. Sharma General Store is stop 3 on the route but first here: one batch is already past its act-by date and three lines are slow." |
 | 0:25 | **2. Shelf photo** | Tap **Sharma** → **Start shelf check** → **Snap shelf photo**. | "One photo pre-fills the red-list count and reads batch codes. Each count shows how sure it is. The rep confirms or taps +/−. Everything works offline." |
 | 0:45 | **3. Sunscreen turns red** | Point at the sunscreen card: 23 units, **Red**, act by 27 Nov, "0 sold". Optionally type **17**, watch it update, then type **23** back. | "The distributor billed 6 more since last week and none sold, so the act-by date moves inside 30 days and it turns red, instantly. Act-by is expiry minus the receiving shop's 60-day minimum, minus days to sell there, minus a week's transfer." |
 | 1:05 | **3. Serum to a salon** | **Actions** tab. Show the serum card, then tap **Send to area manager** on the serum and on the sunscreen. | "Red stock gets a recovery ladder; first eligible wins. The professional serum has 40 days left, too short for a shop transfer, so it goes to a partner salon's back-bar. We always stop shipping that batch here, and we never discount it unlabelled." |
 | 1:25 | **4. Lipstick on Thursday's run** | Scroll to the lipstick (amber) → **Propose this move**. | "Slow stock gets a different playbook: visibility, a 30-second brief, a bundle, then move. Two visits of trying unlocked the move. Fresh Look Cosmetics sells this shade every visit and has a delivery run Thursday 5 Nov. It's settled through the distributor, and the rep is paid only when it sells there." |
 | 1:45 | **5. Order keeps value** | **Order** tab. | "The order adds zero slow stock, yet keeps 108% of the usual value: fast sellers topped up to two visits of demand, plus the kajal and micellar water the retailer asked for. Growth protected, waste not created." |
 | 2:00 | **Share (optional)** | **Share with retailer**. | "A WhatsApp draft in the shop's language, Hindi here. The rep edits and sends it; nothing is sent automatically." |
-| 2:10 | **6. Manager approves** | Manager window, **Flags**: point at the category-team note, then **Approve** the serum and the lipstick. Open **Impact**. | "The flags arrived with what the rep saw. Sunscreen is now red in three outlets, so it goes to the category team's demand review. I approve; Impact moves: ₹ saved from waste, units kept from destruction, packaging and reverse trips. We count outcomes, never flags raised. CO₂ appears only when real emission factors are provided." |
+| 2:10 | **6. Manager approves** | Manager window, **Flags**: point at the category-team note, then **Approve** the serum and the lipstick. Open **Impact**. | "Red flags come first, with a 48-hour window: two shops' sunscreen is due today and tomorrow. Only moves that need a decision reach me; in-shop steps stay with the rep. Sunscreen is now red in three outlets, so it goes to the category team's demand review. I approve; Impact moves: ₹ saved from waste, units kept from destruction, packaging and return pickups. We count outcomes, never flags raised. CO₂ appears only when real emission factors are provided." |
 | 2:40 | **7. Hindi** | Rep window: settings icon (top right) → **Language → हिन्दी**. Show Today and Actions. | "Every screen, every rule, in the rep's language: Hindi, Marathi, Tamil or Bengali. AI only suggests; the rep decides." |
 
 Expected numbers on fresh demo data:
-- ₹ saved goes from ₹15,320 to ₹22,571, shown as "+₹7,251 since you opened the desk".
-- Units kept from destruction go from 37 to 50.
+- ₹ saved goes from ₹15,320 to ₹21,881, shown as "+₹6,561 since you opened the desk".
+- Units kept from destruction go from 37 to 49.
+- Return pickups avoided go from 7 to 8 (both Sharma lines leave on one pickup).
+- Resolved before act-by goes from 7 of 9 to 8 of 11 closed flags (the serum was already past its act-by date).
 
 These are all covered by `src/data/scenario.test.ts` and `src/data/manager.test.ts`.
 

@@ -11,22 +11,20 @@ export function atRiskValue(lines: readonly { status: Status; stockValue: number
 }
 
 /**
- * Of the flags that are settled (resolved) or whose act-by has passed,
- * the share resolved on or before their act-by date.
+ * Of the closed (resolved) flags, the share resolved on or before their act-by date.
+ * Open flags are counted once they close, so closed + open always adds up to all flags.
  */
 export function flagsResolvedBeforeActBy(
   flags: readonly { actBy: ISODate | null; resolvedOn?: ISODate | null }[],
-  today: ISODate,
-): { resolvedInTime: number; due: number; rate: number } {
-  let due = 0;
+): { resolvedInTime: number; closed: number; rate: number } {
+  let closed = 0;
   let inTime = 0;
   for (const f of flags) {
-    const passed = f.actBy != null && f.actBy < today;
-    if (!f.resolvedOn && !passed) continue;
-    due++;
-    if (f.resolvedOn && (f.actBy == null || f.resolvedOn <= f.actBy)) inTime++;
+    if (!f.resolvedOn) continue;
+    closed++;
+    if (f.actBy == null || f.resolvedOn <= f.actBy) inTime++;
   }
-  return { resolvedInTime: inTime, due, rate: due > 0 ? inTime / due : 1 };
+  return { resolvedInTime: inTime, closed, rate: closed > 0 ? inTime / closed : 1 };
 }
 
 /** Guardrail: share of must-sell outlet×SKU lines with stock on the shelf. */

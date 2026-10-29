@@ -69,13 +69,13 @@ export function expandSeed(seed: SeedFile): Dataset {
   }));
 
   const resolutions: ResolutionRecord[] = flags
-    .filter((f) => f.state === 'resolved' && f.proposal.kind === 'route')
+    .filter((f) => f.state === 'resolved')
     .map((f) => ({
       id: `r-${f.id}`,
       flagId: f.id,
       outletId: f.outletId,
       skuId: f.skuId,
-      route: (f.proposal as { route: ResolutionRecord['route'] }).route,
+      route: f.proposal.route,
       units: f.units,
       unitPrice: f.unitPrice,
       packagingGrams: skuById.get(f.skuId)!.packagingGrams,

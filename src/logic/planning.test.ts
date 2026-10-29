@@ -110,6 +110,15 @@ describe('sustainability tally', () => {
     expect(t.packagingKg).toBeCloseTo(0.3 + 0.6 + (4 * THRESHOLDS.sustainability.defaultPackagingGrams) / 1000);
     expect(t.reverseTripsAvoided).toBe(2);
   });
+  it('counts one return pickup per shop per day, not per unit or per line', () => {
+    const t = sustainabilityTally([
+      { route: 'transfer', units: 8, unitPrice: 399, outletId: 'a', date: '2026-11-02' },
+      { route: 'salon_backbar', units: 3, unitPrice: 1150, outletId: 'a', date: '2026-11-02' },
+      { route: 'donation', units: 5, unitPrice: 399, outletId: 'b', date: '2026-11-02' },
+      { route: 'epr_recycling', units: 2, unitPrice: 1150, outletId: 'c', date: '2026-11-02' },
+    ]);
+    expect(t.reverseTripsAvoided).toBe(2);
+  });
   it('shows no CO₂ unless emission factors are provided', () => {
     expect(sustainabilityTally(resolutions).co2Kg).toBeNull();
     const withFactor = { ...THRESHOLDS, sustainability: { ...THRESHOLDS.sustainability, co2KgPerReverseTrip: 2.5 } };
@@ -136,16 +145,13 @@ describe('manager KPIs', () => {
     ).toBe(0.5);
     expect(loadingIndex(12, 18)).toBe(-6);
   });
-  it('flags resolved before act-by', () => {
-    const r = flagsResolvedBeforeActBy(
-      [
-        { actBy: '2026-11-10', resolvedOn: '2026-11-03' }, // in time
-        { actBy: '2026-10-30', resolvedOn: '2026-11-01' }, // late
-        { actBy: '2026-10-31', resolvedOn: null }, // passed, open
-        { actBy: '2026-12-01', resolvedOn: null }, // not yet due
-      ],
-      '2026-11-02',
-    );
-    expect(r).toEqual({ resolvedInTime: 1, due: 3, rate: 1 / 3 });
+  it('flags resolved before act-by, out of closed flags only', () => {
+    const r = flagsResolvedBeforeActBy([
+      { actBy: '2026-11-10', resolvedOn: '2026-11-03' }, // in time
+      { actBy: '2026-10-30', resolvedOn: '2026-11-01' }, // late
+      { actBy: null, resolvedOn: '2026-11-01' }, // no act-by: in time
+      { actBy: '2026-10-31', resolvedOn: null }, // open: counted once it closes
+    ]);
+    expect(r).toEqual({ resolvedInTime: 2, closed: 3, rate: 2 / 3 });
   });
 });

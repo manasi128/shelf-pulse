@@ -8,7 +8,7 @@ import AiBadge from '../../components/AiBadge';
 import KpiTile from '../../components/KpiTile';
 import TrendChart from '../../components/charts/TrendChart';
 import { flagQueue, kpis, territory } from '../../data/manager';
-import { formatINRCompact, formatPct } from '../../i18n/format';
+import { formatDate, formatINRCompact, formatPct } from '../../i18n/format';
 import { summaryFacts, templateSummary } from './summary';
 import { useManager } from './useManager';
 import { savedBaseline } from './baseline';
@@ -29,6 +29,7 @@ export default function Overview() {
   const template = templateSummary(t, k, open, category);
   const summary = aiText && aiText.lang === i18n.language ? aiText : { text: template, source: 'rules' as AiSource };
   const loadingOk = k.loadingIndexPts <= 0;
+  const pts = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)} ${t('units.pts')}`;
 
   return (
     <section>
@@ -87,16 +88,25 @@ export default function Overview() {
               ) : (
                 <ArrowUpRight size={16} aria-hidden="true" className="text-red" />
               )}
-              {`${k.returnRateChangePct > 0 ? '+' : ''}${k.returnRateChangePct.toFixed(1)} ${t('units.pts')}`}
+              {t('mgr.kpi.returnRateSince', {
+                change: pts(k.returnRateChangePct),
+                date: formatDate(k.returnRateStartWeek),
+                start: `${k.returnRateStartPct.toFixed(1)}%`,
+              })}
             </span>
           }
-          note={<span className="text-muted">{t('mgr.kpi.returnRateSub', { control: `${k.controlReturnRatePct.toFixed(1)}%` })}</span>}
+          note={
+            <span className="text-muted">
+              {t('mgr.kpi.returnRateSub', { control: `${k.controlReturnRatePct.toFixed(1)}%`, diff: pts(k.returnRateVsControlPct) })}
+            </span>
+          }
         />
         <KpiTile label={t('mgr.kpi.atRisk')} value={formatINRCompact(k.atRisk)} sub={<span className="text-muted">{t('mgr.kpi.atRiskSub')}</span>} />
         <KpiTile
           label={t('mgr.kpi.resolved')}
           value={formatPct(k.resolved.rate)}
-          sub={<span className="text-muted">{t('mgr.kpi.resolvedSub', { n: k.resolved.resolvedInTime, due: k.resolved.due })}</span>}
+          sub={<span className="text-muted">{t('mgr.kpi.resolvedSub', { n: k.resolved.resolvedInTime, closed: k.resolved.closed })}</span>}
+          note={open > 0 ? <span className="text-muted">{t('mgr.kpi.resolvedOpen', { count: open })}</span> : undefined}
         />
         <KpiTile
           label={t('mgr.kpi.osa')}

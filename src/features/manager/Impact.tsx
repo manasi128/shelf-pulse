@@ -52,6 +52,7 @@ export default function Impact() {
           label={t('mgr.impact.trips')}
           value={formatNumber(tally.reverseTripsAvoided)}
           sub={<Truck size={18} aria-hidden="true" className="text-green" />}
+          note={<span className="text-muted">{t('mgr.impact.tripsSub')}</span>}
         />
       </dl>
 

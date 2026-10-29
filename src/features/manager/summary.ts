@@ -6,7 +6,7 @@ import type { Kpis } from '../../data/manager';
 export function summaryFacts(k: Kpis, openFlags: number, category: { name: string; outlets: number }[]) {
   return {
     resolvedInTime: k.resolved.resolvedInTime,
-    flagsDue: k.resolved.due,
+    flagsClosed: k.resolved.closed,
     savedFromWaste: formatINRCompact(k.tally.rupeesSaved),
     unitsKeptFromDestruction: k.tally.unitsKeptFromDestruction,
     returnExpiryRate: `${k.returnRatePct.toFixed(1)}%`,
@@ -20,7 +20,7 @@ export function summaryFacts(k: Kpis, openFlags: number, category: { name: strin
 
 export function templateSummary(t: TFunction, k: Kpis, openFlags: number, category: { name: string; outlets: number }[]) {
   return [
-    t('mgr.summary.resolved', { n: k.resolved.resolvedInTime, due: k.resolved.due }),
+    t('mgr.summary.resolved', { n: k.resolved.resolvedInTime, closed: k.resolved.closed }),
     t('mgr.summary.saved', { saved: formatINRCompact(k.tally.rupeesSaved), units: formatNumber(k.tally.unitsKeptFromDestruction) }),
     t('mgr.summary.rate', { rate: `${k.returnRatePct.toFixed(1)}%`, control: `${k.controlReturnRatePct.toFixed(1)}%` }),
     t('mgr.summary.osa', { osa: formatPct(k.mustSellOsa) }),

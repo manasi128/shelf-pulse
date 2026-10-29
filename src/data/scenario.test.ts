@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { DEMO_TODAY } from '../config/demo';
-import { skusForCategoryReview } from '../logic';
+import { daysBetween, skusForCategoryReview } from '../logic';
 import seed from './seed.json';
 import { expandSeed, type SeedFile } from './expandSeed';
 import { orderForOutlet, outletLines, rankToday, type Drafts } from './derive';
@@ -30,7 +30,8 @@ function sharmaCounted(): Drafts {
   return { sharma: draft };
 }
 
-const line = (drafts: Drafts, sku: string) => outletLines(data, 'sharma', drafts, today).find((v) => v.sku.id === sku)!;
+const line = (drafts: Drafts, sku: string, outletId = 'sharma') =>
+  outletLines(data, outletId, drafts, today).find((v) => v.sku.id === sku)!;
 
 describe('seed shape', () => {
   it('has one beat of 8 outlets with a 6-SKU red list each', () => {
@@ -45,10 +46,10 @@ describe('1. Today: Sharma General Store is first, and we can say why', () => {
     expect(ranked[0].outlet.id).toBe('sharma');
     expect(ranked[0].outlet.routeOrder).toBe(3);
   });
-  it('gives plain reasons: a red line, act-by already passed, ambers, open flags', () => {
+  it('gives plain reasons: a red line, act-by already passed, ambers', () => {
     const codes = ranked[0].reasons.map((r) => r.code);
     expect(codes[0]).toBe('red_lines');
-    expect(codes).toEqual(expect.arrayContaining(['act_by_soon', 'amber_lines', 'open_flags']));
+    expect(codes).toEqual(expect.arrayContaining(['act_by_soon', 'amber_lines']));
   });
 });
 
@@ -104,6 +105,21 @@ describe('Manager desk', () => {
   it('has open flags to decide and resolved history for the tallies', () => {
     expect(data.flags.filter((f) => f.state === 'open').length).toBeGreaterThanOrEqual(4);
     expect(data.resolutions.length).toBeGreaterThanOrEqual(8);
+  });
+  it('open flags are red lines that really are red today, with the 48-hour window', () => {
+    for (const f of data.flags.filter((x) => x.state === 'open' && x.status === 'red')) {
+      expect(line({}, f.skuId, f.outletId).evaluation.status).toBe('red');
+      expect(daysBetween(f.raisedOn, f.decideBy)).toBe(2);
+    }
+    expect(data.flags.filter((x) => x.state === 'open' && x.status === 'red').length).toBeGreaterThanOrEqual(2);
+  });
+  it('the serum moves the same way before and after the photo count (no jump)', () => {
+    const before = line({}, 'SERUM').evaluation;
+    const after = line(sharmaCounted(), 'SERUM').evaluation;
+    expect(before.cover).toBeCloseTo(28);
+    expect(after.cover).toBeCloseTo(21);
+    expect(after.salesSinceLast).toBe(1);
+    expect(after.cover).not.toBe(after.lifeLeft);
   });
   it('sunscreen becomes red in 3 outlets after the Sharma count → category review', () => {
     const all = (drafts: Drafts) =>

@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "_note": "Fictional example data for a concept prototype. Brand names are used as text only; outlets, people, batches and numbers are invented. Demo today = 2026-11-02 (Monday).",
   "meta": {
     "territory": "Pune West · Beat 3 (Monday)",
@@ -9,7 +9,7 @@
     "photoCounts": {
       "sharma": {
         "SUN": { "stock": 23, "batch": "SN4K08", "confidence": 0.93 },
-        "SERUM": { "stock": 4, "batch": "LP7R44", "confidence": 0.88 },
+        "SERUM": { "stock": 3, "batch": "LP7R44", "confidence": 0.88 },
         "LIP": { "stock": 9, "batch": "MB3S90", "confidence": 0.9 },
         "GIFT": { "stock": 5, "batch": "LP9F11", "confidence": 0.95 },
         "FACEWASH": { "stock": 9, "batch": "GF1W07", "confidence": 0.82 },
@@ -58,7 +58,7 @@
       "retailerLanguage": "hi", "nextRunDate": "2026-11-05", "rangeAsks": ["KAJAL", "MICELLAR"], "daysToNextVisit": 7,
       "lines": {
         "SUN": { "expiry": "2027-03-04", "batch": "SN4K08", "stock": [28, 24, 20, 17], "delivered": [0, 0, 0], "pendingDelivered": 6, "orders": [6, 0, 0], "lastSignals": ["backroom_cartons", "dust_faded"], "weeksSinceSoldIn": 1 },
-        "SERUM": { "expiry": "2026-12-12", "batch": "LP7R44", "stock": [6, 5, 5, 4], "delivered": [0, 0, 0], "pendingDelivered": 0, "orders": [0, 0, 1] },
+        "SERUM": { "expiry": "2026-12-12", "batch": "LP7R44", "stock": [7, 6, 5, 4], "delivered": [0, 0, 0], "pendingDelivered": 0, "orders": [0, 0, 1] },
         "LIP": { "expiry": "2028-01-31", "batch": "MB3S90", "stock": [11, 10, 10, 9], "delivered": [0, 0, 0], "pendingDelivered": 0, "orders": [0, 0, 3], "lastSignals": ["no_facing"], "attempts": [["fix_visibility", "shopkeeper_brief"], ["bundle_hero"]], "weeksSinceSoldIn": 14 },
         "GIFT": { "expiry": "2027-09-30", "batch": "LP9F11", "stock": [6, 5, 5, 5], "delivered": [0, 0, 0], "pendingDelivered": 0, "orders": [0, 0, 3], "lastSignals": ["dust_faded"], "attempts": [["fix_visibility"]] },
         "FACEWASH": { "stock": [12, 11, 10, 10], "delivered": [20, 20, 20], "pendingDelivered": 20, "orders": [20, 20, 20] },
@@ -119,15 +119,15 @@
     { "id": "g8", "skuId": "TINT", "batch": "MB6L01", "expiry": "2028-06-30", "units": 60 }
   ],
   "flags": [
-    { "id": "f-sharma-lip", "outletId": "sharma", "skuId": "LIP", "status": "amber", "proposal": { "kind": "playbook", "step": "bundle_hero" }, "units": 9, "actBy": null, "raisedOn": "2026-10-26", "decideBy": "2026-11-02", "state": "open" },
-    { "id": "f-sharma-gift", "outletId": "sharma", "skuId": "GIFT", "status": "amber", "proposal": { "kind": "playbook", "step": "fix_visibility" }, "units": 5, "actBy": null, "raisedOn": "2026-10-26", "decideBy": "2026-11-02", "state": "open" },
-    { "id": "f-apna-sun", "outletId": "apna-medical", "skuId": "SUN", "status": "amber", "proposal": { "kind": "playbook", "step": "fix_visibility" }, "units": 11, "actBy": "2027-02-08", "raisedOn": "2026-10-26", "decideBy": "2026-11-02", "state": "open" },
-    { "id": "f-patil-lip", "outletId": "patil-kirana", "skuId": "LIP", "status": "amber", "proposal": { "kind": "playbook", "step": "shopkeeper_brief" }, "units": 6, "actBy": null, "raisedOn": "2026-10-26", "decideBy": "2026-11-02", "state": "open" },
+    { "id": "f-lakshmi-sun", "outletId": "lakshmi-medicals", "skuId": "SUN", "status": "red", "proposal": { "kind": "route", "route": "transfer", "receiverOutletId": "glow-beauty", "runDate": "2026-11-05" }, "units": 14, "actBy": "2026-10-22", "raisedOn": "2026-10-31", "decideBy": "2026-11-02", "state": "open" },
+    { "id": "f-omsai-sun", "outletId": "om-sai", "skuId": "SUN", "status": "red", "proposal": { "kind": "route", "route": "transfer", "receiverOutletId": "glow-beauty", "runDate": "2026-11-05" }, "units": 10, "actBy": "2026-11-12", "raisedOn": "2026-11-01", "decideBy": "2026-11-03", "state": "open" },
+    { "id": "f-patil-lip", "outletId": "patil-kirana", "skuId": "LIP", "status": "amber", "proposal": { "kind": "route", "route": "transfer", "receiverOutletId": "fresh-look", "runDate": "2026-11-05" }, "units": 6, "actBy": "2028-01-10", "raisedOn": "2026-10-26", "decideBy": "2026-11-02", "state": "open" },
+    { "id": "f-ganesh-gift", "outletId": "shree-ganesh", "skuId": "GIFT", "status": "amber", "proposal": { "kind": "route", "route": "transfer", "receiverOutletId": "glow-beauty", "runDate": "2026-11-05" }, "units": 4, "actBy": "2027-07-28", "raisedOn": "2026-10-29", "decideBy": "2026-11-05", "state": "open" },
 
     { "id": "h1", "outletId": "shree-ganesh", "skuId": "LIP", "status": "amber", "proposal": { "kind": "route", "route": "sell_through" }, "units": 4, "actBy": "2027-11-20", "raisedOn": "2026-09-14", "decideBy": "2026-09-21", "state": "resolved", "decidedOn": "2026-09-16", "resolvedOn": "2026-09-21" },
     { "id": "h2", "outletId": "patil-kirana", "skuId": "SUN", "status": "red", "proposal": { "kind": "route", "route": "transfer", "receiverOutletId": "glow-beauty" }, "units": 8, "actBy": "2026-10-02", "raisedOn": "2026-09-21", "decideBy": "2026-09-23", "state": "resolved", "decidedOn": "2026-09-22", "resolvedOn": "2026-09-28" },
     { "id": "h3", "outletId": "apna-medical", "skuId": "SERUM", "status": "red", "proposal": { "kind": "route", "route": "salon_backbar", "partnerId": "salon-rang" }, "units": 3, "actBy": "2026-09-30", "raisedOn": "2026-09-28", "decideBy": "2026-09-30", "state": "resolved", "decidedOn": "2026-09-29", "resolvedOn": "2026-10-05" },
-    { "id": "h4", "outletId": "om-sai", "skuId": "GIFT", "status": "amber", "proposal": { "kind": "route", "route": "sell_through" }, "units": 3, "actBy": "2027-06-01", "raisedOn": "2026-10-05", "decideBy": "2026-10-12", "state": "resolved", "decidedOn": "2026-10-06", "resolvedOn": "2026-10-12" },
+    { "id": "h4", "outletId": "lakshmi-medicals", "skuId": "GIFT", "status": "amber", "proposal": { "kind": "route", "route": "sell_through" }, "units": 3, "actBy": "2027-06-01", "raisedOn": "2026-10-05", "decideBy": "2026-10-12", "state": "resolved", "decidedOn": "2026-10-06", "resolvedOn": "2026-10-12" },
     { "id": "h5", "outletId": "lakshmi-medicals", "skuId": "SHAMPOO", "status": "red", "proposal": { "kind": "route", "route": "staff_sale" }, "units": 6, "actBy": "2026-10-20", "raisedOn": "2026-10-05", "decideBy": "2026-10-07", "state": "resolved", "decidedOn": "2026-10-06", "resolvedOn": "2026-10-12" },
     { "id": "h6", "outletId": "fresh-look", "skuId": "SUN", "status": "red", "proposal": { "kind": "route", "route": "donation", "partnerId": "ngo-1" }, "units": 5, "actBy": "2026-10-25", "raisedOn": "2026-10-12", "decideBy": "2026-10-14", "state": "resolved", "decidedOn": "2026-10-13", "resolvedOn": "2026-10-19" },
     { "id": "h7", "outletId": "sharma", "skuId": "FACEWASH", "status": "red", "proposal": { "kind": "route", "route": "tester" }, "units": 2, "actBy": "2026-10-30", "raisedOn": "2026-10-19", "decideBy": "2026-10-21", "state": "resolved", "decidedOn": "2026-10-19", "resolvedOn": "2026-10-19" },

@@ -34,9 +34,14 @@ describe('manager desk', () => {
     });
     const { data, drafts } = await state();
     const q = flagQueue(data, drafts, today);
-    expect(q[0]).toMatchObject({ sku: { id: 'SERUM' }, partnerName: 'Studio Rang Salon (example partner)', value: 4600, daysToDecide: 2 });
-    expect(q.slice(1).every((i) => i.flag.status === 'amber')).toBe(true);
-    expect(q[0].evidence?.evaluation.status).toBe('red');
+    const statuses = q.map((i) => i.flag.status);
+    expect(statuses).toEqual([...statuses].sort((a, b) => (a === b ? 0 : a === 'red' ? -1 : 1)));
+    expect(q[0]).toMatchObject({ outlet: { id: 'lakshmi-medicals' }, daysToDecide: 0 });
+    const serum = q.find((i) => i.sku.id === 'SERUM')!;
+    expect(serum).toMatchObject({ partnerName: 'Studio Rang Salon (example partner)', value: 4600, daysToDecide: 2 });
+    expect(serum.evidence?.evaluation.status).toBe('red');
+    // Only moves that need a decision reach the manager: no in-shop playbook steps.
+    expect(q.every((i) => i.flag.proposal.kind === 'route')).toBe(true);
   });
 
   it('demo beat 6: approving moves ₹ saved, units kept and resolved-before-act-by', async () => {
